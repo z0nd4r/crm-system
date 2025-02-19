@@ -1,13 +1,13 @@
 import jwt 
 import bcrypt
 
-from .config import AuthJWT
+from .config import settings
 
 #шифруем токен
 def encode_jwt(
     payload: dict,
-    private_key: str = AuthJWT.private_key_path.read_text(),
-    algorithm: str = AuthJWT.algorithm,
+    private_key: str = settings.auth_jwt.private_key_path.read_text(),
+    algorithm: str = settings.auth_jwt.algorithm,
 ) -> str:
     
     encoded = jwt.encode(
@@ -21,8 +21,8 @@ def encode_jwt(
 #расшифровываем токен
 def decode_jwt(
     token: str | bytes,
-    public_key: str = AuthJWT.public_key_path.read_text(),
-    algorithm: str = AuthJWT.algorithm,
+    public_key: str = settings.auth_jwt.public_key_path.read_text(),
+    algorithm: str = settings.auth_jwt.algorithm,
 ) -> dict:
     decoded = jwt.decode(
         token,

@@ -6,8 +6,6 @@ from sqlalchemy.orm import sessionmaker
 
 from dotenv import load_dotenv
 
-from app.api.auth.core.config import AuthJWT
-
 load_dotenv()
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
